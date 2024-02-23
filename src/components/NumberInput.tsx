@@ -1,4 +1,5 @@
 const NumberInput = ({value, changeValue}) => {
+    
   return (
     <>
       <input 

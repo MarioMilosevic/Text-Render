@@ -1,11 +1,10 @@
-import React from 'react'
-
-const TextField = () => {
+const TextField = ({ changeTexts, text, value }) => {
+  console.log(changeTexts(value));
   return (
-    <div className='w-[560px] border border-black'>
-      
-    </div>
-  )
-}
+    <article className="w-[560px] border border-red-200 outline mt-8 mx-auto px-4 py-8">
+      {changeTexts(text)}
+    </article>
+  );
+};
 
-export default TextField
+export default TextField;
