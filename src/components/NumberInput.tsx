@@ -1,11 +1,14 @@
-import React from 'react'
-
-const NumberInput = () => {
+const NumberInput = ({value, mario}) => {
   return (
-<>
-    {/* <input type="number" value={1} /> */}
-</>      
-  )
-}
+    <>
+      <input 
+        type="number"
+        value={value}
+        onInput={mario}
+        className="w-full flex justify-center px-2 py-1"
+      />
+    </>
+  );
+};
 
-export default NumberInput
+export default NumberInput;
