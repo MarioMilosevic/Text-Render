@@ -1,8 +1,7 @@
-const TextField = ({ changeTexts, text, value }) => {
-  console.log(changeTexts(value));
+const TextField = ({ text }) => {
   return (
-    <article className="w-[560px] border border-red-200 outline mt-8 mx-auto px-4 py-8">
-      {changeTexts(text)}
+    <article className="w-[560px] border border-red-200 outline mt-4 mx-auto px-4 py-8">
+      {text}
     </article>
   );
 };

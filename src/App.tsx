@@ -1,32 +1,33 @@
 import "./App.css";
-import text from "./data/data.js";
+import { text as dataText } from "./data/data.ts";
 import { useState } from "react";
 import NumberInput from "./components/NumberInput.js";
 import TextField from "./components/TextField.js";
 import Heading from "./components/Heading.js";
+
 function App() {
-  const [value, setValue] = useState(1);
-  const [texts, setTexts] = useState(text);
+  const [value, setValue] = useState<number>(0);
+  const [text, setText] = useState(dataText);
+  const [paragraphs, setParagraphs] = useState([])
 
   const changeValue = (e) => {
     const target = Number(e.target.value);
+    changeText(target)
     setValue(target);
   };
-
-  const changeTexts = (value) => {
-    const slicedArray = texts.slice(0, value);
-    console.log(slicedArray);
+  const changeText = (value: number) => {
+    const slicedArray = text.slice(0, value);
+    setParagraphs(slicedArray)
     return slicedArray;
   };
 
-
-  // [0,1,2,3,4,5,6,7,8]
-  // ako je value 1 vrati 0 ako je value 5 vrati prva 4 ako je 9 vrati prvih 8
   return (
     <>
       <Heading />
       <NumberInput value={value} changeValue={changeValue} />
-      <TextField changeTexts={() => changeTexts(value)} text={text} value={value} />
+      {paragraphs.map(paragraph => {
+        return <TextField text={paragraph} key={paragraph}/>
+      })}
     </>
   );
 }
