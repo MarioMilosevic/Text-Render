@@ -7,18 +7,19 @@ import Heading from "./components/Heading.js";
 
 function App() {
   const [value, setValue] = useState<number>(1);
-  const [text, setText] = useState(dataText);
-  const [paragraphs, setParagraphs] = useState([]);
+  const [paragraphs, setParagraphs] = useState<string[]>([]);
 
   useEffect(() => {
-    const slicedArray = text.slice(0, value);
+    const slicedArray = dataText.slice(0, value);
     setParagraphs(slicedArray);
   }, [value]);
   
-  const changeValue = (e) => {
-    const target = Number(e.target.value);
-    setValue(target);
-  };
+ const changeValue = (e: React.FormEvent<HTMLInputElement>) => {
+   const target = e.target as HTMLInputElement; 
+   const newValue = Number(target.value); 
+   setValue(newValue);
+ };
+
 
   return (
     <>
